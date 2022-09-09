@@ -2,6 +2,7 @@ HELP.md
 target/
 tmp/
 storage/
+producer/.gradle
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
