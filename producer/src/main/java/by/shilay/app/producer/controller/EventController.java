@@ -1,7 +1,7 @@
 package by.shilay.app.producer.controller;
 
 import by.shilay.app.producer.model.Event;
-import by.shilay.app.producer.service.api.EventService;
+import by.shilay.app.producer.service.EventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
