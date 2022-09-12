@@ -1,0 +1,14 @@
+database:
+  host: localhost
+  port: 5432
+  schema: postgres
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${database.host}:${database.port}/${database.schema}
+    username: postgres
+    password: root
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
