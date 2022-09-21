@@ -1,6 +1,6 @@
 package by.shilay.app.consumer.config;
 
-import by.shilay.app.consumer.kafka.Event;
+import by.shilay.app.consumer.kafka.KafkaMessage;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,16 +35,16 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public ConsumerFactory<String, Event> consumerFactory(){
+    public ConsumerFactory<String, KafkaMessage> consumerFactory(){
         return new DefaultKafkaConsumerFactory<>(consumerConfig(), new StringDeserializer(),
-                new JsonDeserializer<>(Event.class));
+                new JsonDeserializer<>(KafkaMessage.class));
     }
 
     @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, Event>> eventsKafkaListenerContainerFactory(
-            ConsumerFactory<String, Event> consumerFactory
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, KafkaMessage>> eventsKafkaListenerContainerFactory(
+            ConsumerFactory<String, KafkaMessage> consumerFactory
     ){
-        ConcurrentKafkaListenerContainerFactory<String, Event> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        ConcurrentKafkaListenerContainerFactory<String, KafkaMessage> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory);
         factory.setMessageConverter(converter());
         return factory;
