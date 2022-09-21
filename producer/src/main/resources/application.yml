@@ -1,7 +1,7 @@
 database:
   host: localhost
   port: 5432
-  schema: postgres
+  schema: events_db
 
 spring:
   datasource:
@@ -12,3 +12,5 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL95Dialect
+  kafka:
+    bootstrap-servers: localhost:9092

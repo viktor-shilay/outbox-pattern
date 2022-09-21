@@ -19,6 +19,7 @@ dependencies {
             'org.springframework.boot:spring-boot-starter',
             'org.springframework.boot:spring-boot-starter-web',
             'org.springframework.boot:spring-boot-starter-data-jpa',
+            'org.springframework.kafka:spring-kafka',
             'org.flywaydb:flyway-core'
     )
 

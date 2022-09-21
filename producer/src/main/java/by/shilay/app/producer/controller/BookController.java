@@ -1,22 +1,22 @@
 package by.shilay.app.producer.controller;
 
-import by.shilay.app.producer.model.Event;
-import by.shilay.app.producer.service.EventService;
+import by.shilay.app.producer.model.Book;
+import by.shilay.app.producer.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/event")
+@RequestMapping("api/v1/books")
 @RequiredArgsConstructor
 @RestController
-public class EventController {
+public class BookController {
 
-    private final EventService eventService;
+    private final BookService bookService;
 
     @PostMapping
-    public void saveEvent(@RequestBody Event event){
-        eventService.save(event);
+    public void save(@RequestBody Book book){
+        bookService.save(book);
     }
 }
