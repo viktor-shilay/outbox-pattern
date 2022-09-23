@@ -5,8 +5,6 @@ services:
     image: quay.io/debezium/zookeeper:1.9
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
-    ports:
-      - ${ZOOKEEPER_PORT}:2181
   kafka-service:
     container_name: kafka
     image: quay.io/debezium/kafka:1.9
@@ -71,7 +69,5 @@ services:
       context: consumer/.
       dockerfile: Dockerfile
     image: consumer-app
-    ports:
-      - ${CONSUMER_PORT}:8081
     environment:
       spring.kafka.bootstrap-servers: kafka:9092
