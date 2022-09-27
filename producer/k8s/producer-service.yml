@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: producer-service
+spec:
+  type: LoadBalancer
+  # селектор для определения целевых pod'ов
+  selector:
+    app: producer-app
+  ports:
+    # port - входящий порт сервиса
+    - port: 8080
+      # targetPort - целевой порт у pod'ов сервиса
+      targetPort: 8080
+#      nodePort: 30001

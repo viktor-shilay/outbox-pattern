@@ -3,6 +3,8 @@ services:
   zookeeper-service:
     container_name: zookeeper
     image: quay.io/debezium/zookeeper:1.9
+    ports:
+      - ${ZOOKEEPER_PORT}:2181
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
   kafka-service:
@@ -13,8 +15,12 @@ services:
     ports:
       - ${KAFKA_PORT}:9092
     environment:
-      BROKER_ID: 1
       ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "INTERNAL_PLAINTEXT:PLAINTEXT,EXTERNAL_PLAINTEXT:PLAINTEXT"
+      KAFKA_ADVERTISED_LISTENERS: "INTERNAL_PLAINTEXT://kafka-service:9092,EXTERNAL_PLAINTEXT://host.docker.internal:8081"
+      KAFKA_LISTENERS: "INTERNAL_PLAINTEXT://0.0.0.0:9092,EXTERNAL_PLAINTEXT://0.0.0.0:8081"
+      KAFKA_INTER_BROKER_LISTENER_NAME: "INTERNAL_PLAINTEXT"
+
   postgres-service:
     container_name: postgres
     image: quay.io/debezium/postgres:11

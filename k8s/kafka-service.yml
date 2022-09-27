@@ -3,37 +3,7 @@ kind: Service
 metadata:
   name: kafka-service
 spec:
-  type: NodePort
-  selector:
-    app: kafka
+  type: ExternalName
+  externalName: host.docker.internal
   ports:
     - port: 9092
-      targetPort: 9092
-      nodePort: 30003
-
----
-
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: kafka-deployment
-spec:
-  selector:
-    matchLabels:
-      app: kafka
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: kafka
-    spec:
-      containers:
-        - name: kafka
-          image: quay.io/debezium/kafka:1.9
-          ports:
-            - containerPort: 9092
-          env:
-            - name: BROKER_ID
-              value: "1"
-            - name: ZOOKEEPER_CONNECT
-              value: zookeeper-service:2181
