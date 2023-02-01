@@ -55,25 +55,3 @@ services:
       - ${KAFDROP_PORT}:9000
     environment:
       KAFKA_BROKERCONNECT: kafka:9092
-
-  producer-service:
-    container_name: producer
-    build:
-      context: producer/.
-      dockerfile: Dockerfile
-    image: producer-app
-    ports:
-      - ${PRODUCER_PORT}:8080
-    environment:
-      spring.datasource.url: jdbc:postgresql://${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
-    depends_on:
-      - postgres-service
-
-  consumer-service:
-    container_name: consumer
-    build:
-      context: consumer/.
-      dockerfile: Dockerfile
-    image: consumer-app
-    environment:
-      spring.kafka.bootstrap-servers: kafka:9092
