@@ -5,10 +5,10 @@ for microservices running in a docker or a kubernetes cluster.
 
 ## Table of contents
 
-- [The problem statement](#The problem statement)
-- [The OutBox pattern](#The OutBox pattern)
-- [How to run the project](#How to run the project)
-- [How to use](#How to use)
+* [The problem statement](#the-problem-statement)
+* [The OutBox pattern](#the-outbox-pattern)
+* [How to run the project](#how-to-run-the-project)
+* [How to use](#how-to-use)
 
 ## The problem statement
 Microservices often publish events after performing a database transaction. 
