@@ -5,10 +5,10 @@ for microservices running in a docker or a kubernetes cluster.
 
 ## Table of contents
 
-- [The problem statement](#The problem statement)
-- [The OutBox pattern](#The OutBox pattern)
-- [How to run the project](#How to run the project)
-- [How to use](#How to use)
+* [The problem statement](#the-problem-statement)
+* [The OutBox pattern](#the-outbox-pattern)
+* [How to run the project](#how-to-run-the-project)
+* [How to use](#how-to-use)
 
 ## The problem statement
 Microservices often publish events after performing a database transaction. 
@@ -138,6 +138,7 @@ Debezium will keep reading the database logs and send those events to Apache Kaf
 
 2. Now whenever when you create a new book, consumer service will receive notification. 
 To create new book, send POST request ("http://localhost:8080/api/v1/books"). Swagger UI is also available at http://localhost:8080/swagger-ui/
+
 ![book-create-image](https://user-images.githubusercontent.com/67865788/216025125-9a02673d-e1c7-4926-9ccc-3d36df5d5787.png)
 
 
@@ -145,5 +146,6 @@ To create new book, send POST request ("http://localhost:8080/api/v1/books"). Sw
     ```
    docker logs consumer -f
     ```
-   And you'll see the result:
+   And you'll see the result: \
+   \
    ![consumer-service-image](https://user-images.githubusercontent.com/67865788/216033104-e7e9abca-548e-4505-84b4-0eaeace8ff81.png)
